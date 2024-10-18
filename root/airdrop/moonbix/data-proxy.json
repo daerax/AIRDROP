@@ -1,0 +1,16 @@
+{
+  "accounts": [
+    {
+      "acc_info": "query_id=",
+      "proxy_info": "http://username:password@192.168.1.1:7890"
+    },
+    {
+      "acc_info": "user=",
+      "proxy_info": "http://username:password@192.168.1.1:7890"
+    },
+	{
+      "acc_info": "user=",
+      "proxy_info": "http://username:password@192.168.1.1:7890"
+    }
+  ]
+}

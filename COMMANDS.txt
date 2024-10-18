@@ -1,0 +1,4 @@
+chmod +x /etc/init.d/claimpy
+chmod +x /root/airdrop/claimpy.sh
+chmod +x /root/airdrop/claimpy-tiapJam.sh
+chmod +x /etc/profile.d/30-sysinfo.sh

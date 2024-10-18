@@ -1,0 +1,14 @@
+{
+  "telegram_bot_token": "xxx",
+  "telegram_chat_id": "xxx",
+  "accounts": [ 
+    {
+    "email": "email1@gmail.com",
+    "token": "2056b72xxx"
+    },
+    {
+    "email": "semail2@gmail.com",
+    "token": "2056b72xxx"
+    }
+  ] 
+}

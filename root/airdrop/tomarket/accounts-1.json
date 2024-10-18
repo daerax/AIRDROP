@@ -1,0 +1,16 @@
+{
+    "accounts": [
+        {
+            "first_name": "Akun 1",
+            "token": "eyJhbGciOiJ"
+        },
+        {
+            "first_name": "Akun 2",
+            "token": "eyJhbGciOiJ"
+        },
+        {
+            "first_name": "Akun 3",
+            "token": "eyJhbGciOiJ"
+        }
+    ]
+}
