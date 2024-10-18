@@ -31,6 +31,8 @@ class Tomarket:
 
     def print_timestamp(self, message):
         print(
+            f"{Fore.BLUE + Style.BRIGHT}[ {datetime.now().astimezone().strftime('%x %X %Z')} ]{Style.RESET_ALL}"
+            f"{Fore.WHITE + Style.BRIGHT} | {Style.RESET_ALL}"
             f"{message}",
             flush=True
         )
@@ -761,8 +763,7 @@ class Tomarket:
                     f"{Fore.GREEN + Style.BRIGHT}[ Total Balance {total_balance} $TOMA ]{Style.RESET_ALL}"
                 )
                 self.print_timestamp(f"{Fore.CYAN + Style.BRIGHT}[ Restarting At {(datetime.now().astimezone() + timedelta(seconds=sleep_time)).strftime('%X %Z')} ]{Style.RESET_ALL}")
-                print("KELUAR")
-                break
+
                 await asyncio.sleep(sleep_time)
                 self.clear_terminal()
             except Exception as e:
@@ -776,23 +777,23 @@ if __name__ == '__main__':
 
         init(autoreset=True)
         tomarket = Tomarket()
-        # tomarket.print_timestamp(
-            # f"{Fore.GREEN + Style.BRIGHT}[ 1 ]{Style.RESET_ALL}"
-            # f"{Fore.WHITE + Style.BRIGHT} | {Style.RESET_ALL}"
-            # f"{Fore.BLUE + Style.BRIGHT}[ Generate Tokens ]{Style.RESET_ALL}"
-        # )
-        # tomarket.print_timestamp(
-            # f"{Fore.GREEN + Style.BRIGHT}[ 2 ]{Style.RESET_ALL}"
-            # f"{Fore.WHITE + Style.BRIGHT} | {Style.RESET_ALL}"
-            # f"{Fore.BLUE + Style.BRIGHT}[ Use Existing accounts-*.json ]{Style.RESET_ALL}"
-        # )
+        tomarket.print_timestamp(
+            f"{Fore.GREEN + Style.BRIGHT}[ 1 ]{Style.RESET_ALL}"
+            f"{Fore.WHITE + Style.BRIGHT} | {Style.RESET_ALL}"
+            f"{Fore.BLUE + Style.BRIGHT}[ Generate Tokens ]{Style.RESET_ALL}"
+        )
+        tomarket.print_timestamp(
+            f"{Fore.GREEN + Style.BRIGHT}[ 2 ]{Style.RESET_ALL}"
+            f"{Fore.WHITE + Style.BRIGHT} | {Style.RESET_ALL}"
+            f"{Fore.BLUE + Style.BRIGHT}[ Use Existing accounts-*.json ]{Style.RESET_ALL}"
+        )
 
-        initial_choice = 2 #int(input(
-            # f"{Fore.BLUE + Style.BRIGHT}[ {datetime.now().astimezone().strftime('%x %X %Z')} ]{Style.RESET_ALL}"
-            # f"{Fore.WHITE + Style.BRIGHT} | {Style.RESET_ALL}"
-            # f"{Fore.YELLOW + Style.BRIGHT}[ Select Option ]{Style.RESET_ALL}"
-            # f"{Fore.WHITE + Style.BRIGHT} | {Style.RESET_ALL}"
-        # ))
+        initial_choice = int(input(
+            f"{Fore.BLUE + Style.BRIGHT}[ {datetime.now().astimezone().strftime('%x %X %Z')} ]{Style.RESET_ALL}"
+            f"{Fore.WHITE + Style.BRIGHT} | {Style.RESET_ALL}"
+            f"{Fore.YELLOW + Style.BRIGHT}[ Select Option ]{Style.RESET_ALL}"
+            f"{Fore.WHITE + Style.BRIGHT} | {Style.RESET_ALL}"
+        ))
         if initial_choice == 1:
             lines_per_file = int(input(
                 f"{Fore.BLUE + Style.BRIGHT}[ {datetime.now().astimezone().strftime('%x %X %Z')} ]{Style.RESET_ALL}"
@@ -816,19 +817,19 @@ if __name__ == '__main__':
         else:
             raise ValueError("Invalid Initial Choice. Please Run The Script Again And Choose A Valid Option")
 
-        # for i, accounts_file in enumerate(account_files, start=1):
-            # tomarket.print_timestamp(
-                # f"{Fore.GREEN + Style.BRIGHT}[ {i} ]{Style.RESET_ALL}"
-                # f"{Fore.WHITE + Style.BRIGHT} | {Style.RESET_ALL}"
-                # f"{Fore.BLUE + Style.BRIGHT}[ {accounts_file} ]{Style.RESET_ALL}"
-            # )
+        for i, accounts_file in enumerate(account_files, start=1):
+            tomarket.print_timestamp(
+                f"{Fore.GREEN + Style.BRIGHT}[ {i} ]{Style.RESET_ALL}"
+                f"{Fore.WHITE + Style.BRIGHT} | {Style.RESET_ALL}"
+                f"{Fore.BLUE + Style.BRIGHT}[ {accounts_file} ]{Style.RESET_ALL}"
+            )
 
-        choice = 0 #int(input(
-            # f"{Fore.BLUE + Style.BRIGHT}[ {datetime.now().astimezone().strftime('%x %X %Z')} ]{Style.RESET_ALL}"
-            # f"{Fore.WHITE + Style.BRIGHT} | {Style.RESET_ALL}"
-            # f"{Fore.YELLOW + Style.BRIGHT}[ Select File You Want To Use ]{Style.RESET_ALL}"
-            # f"{Fore.WHITE + Style.BRIGHT} | {Style.RESET_ALL}"
-        # )) - 1
+        choice = int(input(
+            f"{Fore.BLUE + Style.BRIGHT}[ {datetime.now().astimezone().strftime('%x %X %Z')} ]{Style.RESET_ALL}"
+            f"{Fore.WHITE + Style.BRIGHT} | {Style.RESET_ALL}"
+            f"{Fore.YELLOW + Style.BRIGHT}[ Select File You Want To Use ]{Style.RESET_ALL}"
+            f"{Fore.WHITE + Style.BRIGHT} | {Style.RESET_ALL}"
+        )) - 1
         if choice < 0 or choice >= len(account_files):
             raise ValueError("Invalid Choice. Please Run The Script Again And Choose A Valid Option")
 
