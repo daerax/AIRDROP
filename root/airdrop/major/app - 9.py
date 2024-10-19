@@ -31,6 +31,8 @@ class Major:
 
     def print_timestamp(self, message):
         print(
+            f"{Fore.BLUE + Style.BRIGHT}[ {datetime.now().astimezone().strftime('%x %X %Z')} ]{Style.RESET_ALL}"
+            f"{Fore.WHITE + Style.BRIGHT} | {Style.RESET_ALL}"
             f"{message}",
             flush=True
         )
@@ -453,8 +455,7 @@ class Major:
 
                 sleep_timestamp = (datetime.now().astimezone() + timedelta(seconds=3600)).strftime('%X %Z')
                 self.print_timestamp(f"{Fore.CYAN + Style.BRIGHT}[ Restarting At {sleep_timestamp} ]{Style.RESET_ALL}")
-                print("KELUAR")
-                break
+
                 await asyncio.sleep(3600)
                 self.clear_terminal()
             except Exception as e:
@@ -472,28 +473,28 @@ if __name__ == '__main__':
         queries_files = [f for f in os.listdir() if f.startswith('queries-') and f.endswith('.txt')]
         queries_files.sort(key=lambda x: int(re.findall(r'\d+', x)[0]) if re.findall(r'\d+', x) else 0)
 
-        # major.print_timestamp(
-            # f"{Fore.GREEN + Style.BRIGHT}[ 1 ]{Style.RESET_ALL}"
-            # f"{Fore.WHITE + Style.BRIGHT} | {Style.RESET_ALL}"
-            # f"{Fore.BLUE + Style.BRIGHT}[ Split Queries ]{Style.RESET_ALL}"
-        # )
-        # major.print_timestamp(
-            # f"{Fore.GREEN + Style.BRIGHT}[ 2 ]{Style.RESET_ALL}"
-            # f"{Fore.WHITE + Style.BRIGHT} | {Style.RESET_ALL}"
-            # f"{Fore.BLUE + Style.BRIGHT}[ Use Existing 'queries-*.txt' ]{Style.RESET_ALL}"
-        # )
-        # major.print_timestamp(
-            # f"{Fore.GREEN + Style.BRIGHT}[ 3 ]{Style.RESET_ALL}"
-            # f"{Fore.WHITE + Style.BRIGHT} | {Style.RESET_ALL}"
-            # f"{Fore.BLUE + Style.BRIGHT}[ Use 'queries.txt' Without Splitting ]{Style.RESET_ALL}"
-        # )
+        major.print_timestamp(
+            f"{Fore.GREEN + Style.BRIGHT}[ 1 ]{Style.RESET_ALL}"
+            f"{Fore.WHITE + Style.BRIGHT} | {Style.RESET_ALL}"
+            f"{Fore.BLUE + Style.BRIGHT}[ Split Queries ]{Style.RESET_ALL}"
+        )
+        major.print_timestamp(
+            f"{Fore.GREEN + Style.BRIGHT}[ 2 ]{Style.RESET_ALL}"
+            f"{Fore.WHITE + Style.BRIGHT} | {Style.RESET_ALL}"
+            f"{Fore.BLUE + Style.BRIGHT}[ Use Existing 'queries-*.txt' ]{Style.RESET_ALL}"
+        )
+        major.print_timestamp(
+            f"{Fore.GREEN + Style.BRIGHT}[ 3 ]{Style.RESET_ALL}"
+            f"{Fore.WHITE + Style.BRIGHT} | {Style.RESET_ALL}"
+            f"{Fore.BLUE + Style.BRIGHT}[ Use 'queries.txt' Without Splitting ]{Style.RESET_ALL}"
+        )
 
-        initial_choice = 3 #int(input(
-            # f"{Fore.BLUE + Style.BRIGHT}[ {datetime.now().astimezone().strftime('%x %X %Z')} ]{Style.RESET_ALL}"
-            # f"{Fore.WHITE + Style.BRIGHT} | {Style.RESET_ALL}"
-            # f"{Fore.YELLOW + Style.BRIGHT}[ Select An Option ]{Style.RESET_ALL}"
-            # f"{Fore.WHITE + Style.BRIGHT} | {Style.RESET_ALL}"
-        # ))
+        initial_choice = int(input(
+            f"{Fore.BLUE + Style.BRIGHT}[ {datetime.now().astimezone().strftime('%x %X %Z')} ]{Style.RESET_ALL}"
+            f"{Fore.WHITE + Style.BRIGHT} | {Style.RESET_ALL}"
+            f"{Fore.YELLOW + Style.BRIGHT}[ Select An Option ]{Style.RESET_ALL}"
+            f"{Fore.WHITE + Style.BRIGHT} | {Style.RESET_ALL}"
+        ))
         if initial_choice == 1:
             accounts = int(input(
                 f"{Fore.BLUE + Style.BRIGHT}[ {datetime.now().astimezone().strftime('%x %X %Z')} ]{Style.RESET_ALL}"
