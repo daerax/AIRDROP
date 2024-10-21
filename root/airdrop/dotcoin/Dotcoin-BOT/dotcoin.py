@@ -37,10 +37,10 @@ class Dotcoin:
     def welcome(self):
         print(
             f"""
-        {Fore.GREEN + Style.BRIGHT}Auto Claim {Fore.BLUE + Style.BRIGHT}Dotcoin - BOT
+        Auto Claim {Fore.BLUE + Style.BRIGHT}Dotcoin - BOT
             """
             f"""
-        {Fore.GREEN + Style.BRIGHT}Rey? {Fore.YELLOW + Style.BRIGHT}<INI WATERMARK>
+        Rey? {Fore.YELLOW + Style.BRIGHT}<INI WATERMARK>
             """
         )
 
@@ -200,7 +200,7 @@ class Dotcoin:
                 multitap_upgrade = multitap_upgrade == "y"
                 break
             else:
-                print(f"{Fore.RED+Style.BRIGHT}Invalid Input.{Fore.WHITE+Style.BRIGHT} Choose 'y' to upgrade or 'n' to skip.{Style.RESET_ALL}")
+                print(f"Invalid Input.Choose 'y' to upgrade or 'n' to skip.")
         multitap_count = 0
         if multitap_upgrade:
             while True:
@@ -209,9 +209,9 @@ class Dotcoin:
                     if multitap_count > 0:
                         break
                     else:
-                        print(f"{Fore.RED+Style.BRIGHT}Please enter a positive number.{Style.RESET_ALL}")
+                        print(f"Please enter a positive number.")
                 except ValueError:
-                    print(f"{Fore.RED+Style.BRIGHT}Invalid input. Enter a number.{Style.RESET_ALL}")
+                    print(f"Invalid input. Enter a number.")
         
         while True:
             attempts_upgrade = 'n' #input("Upgrade Limit Attempts? [y/n] -> ").strip().lower()
@@ -219,7 +219,7 @@ class Dotcoin:
                 attempts_upgrade = attempts_upgrade == "y"
                 break
             else:
-                print(f"{Fore.RED+Style.BRIGHT}Invalid Input.{Fore.WHITE+Style.BRIGHT} Choose 'y' to upgrade or 'n' to skip.{Style.RESET_ALL}")
+                print(f"Invalid Input.Choose 'y' to upgrade or 'n' to skip.")
         attempts_count = 0
         if attempts_upgrade:
             while True:
@@ -228,9 +228,9 @@ class Dotcoin:
                     if attempts_count > 0:
                         break
                     else:
-                        print(f"{Fore.RED+Style.BRIGHT}Please enter a positive number.{Style.RESET_ALL}")
+                        print(f"Please enter a positive number.")
                 except ValueError:
-                    print(f"{Fore.RED+Style.BRIGHT}Invalid input. Enter a number.{Style.RESET_ALL}")
+                    print(f"Invalid input. Enter a number.")
 
         while True:
             miner_upgrade = 'y' #input("Upgarde DTC Mining Level? [y/n] -> ").strip().lower()
@@ -238,7 +238,7 @@ class Dotcoin:
                 miner_upgrade = miner_upgrade == "y"
                 break
             else:
-                print(f"{Fore.RED+Style.BRIGHT}Invalid Input.{Fore.WHITE+Style.BRIGHT} Choose 'y' to upgrade or 'n' to skip.{Style.RESET_ALL}")
+                print(f"Invalid Input.Choose 'y' to upgrade or 'n' to skip.")
 
         while True:
             go_spin = 'y' #input("Play Game Spinner? [y/n] -> ").strip().lower()
@@ -246,7 +246,7 @@ class Dotcoin:
                 go_spin = go_spin == "y"
                 break
             else:
-                print(f"{Fore.RED+Style.BRIGHT}Invalid Input.{Fore.WHITE+Style.BRIGHT} Choose 'y' to play or 'n' to skip.{Style.RESET_ALL}")
+                print(f"Invalid Input.Choose 'y' to play or 'n' to skip.")
 
         while True:
             go_task = 'y' #input("Check Available Tasks? [y/n] -> ").strip().lower()
@@ -254,7 +254,7 @@ class Dotcoin:
                 go_task = go_task == "y"
                 break
             else:
-                print(f"{Fore.RED+Style.BRIGHT}Invalid Input.{Fore.WHITE+Style.BRIGHT} Choose 'y' to check or 'n' to skip.{Style.RESET_ALL}")
+                print(f"Invalid Input.Choose 'y' to check or 'n' to skip.")
 
         return multitap_upgrade, multitap_count, attempts_upgrade, attempts_count, miner_upgrade, go_spin, go_task
     
@@ -266,33 +266,29 @@ class Dotcoin:
             user = self.user_info(token)
             if user:
                 self.log(
-                    f"{Fore.MAGENTA+Style.BRIGHT}[ Account{Style.RESET_ALL}"
-                    f"{Fore.WHITE+Style.BRIGHT} {user['first_name']} {Style.RESET_ALL}"
-                    f"{Fore.MAGENTA+Style.BRIGHT}] [ Balance{Style.RESET_ALL}"
-                    f"{Fore.WHITE+Style.BRIGHT} {user['balance']} {Style.RESET_ALL}"
-                    f"{Fore.MAGENTA+Style.BRIGHT}Point ] [ Level{Style.RESET_ALL}"
-                    f"{Fore.WHITE+Style.BRIGHT} {user['level']} {Style.RESET_ALL}"
-                    f"{Fore.MAGENTA+Style.BRIGHT}]{Style.RESET_ALL}"
+                    f"[ Account {user['first_name']} ]"
+                    f"[ Balance {user['balance']} Point ]"
+                    f"[ Level {user['level']} ]"
                 )
                 time.sleep(1)
 
-                self.log(f"{Fore.CYAN+Style.BRIGHT}[ Booster Info ]{Style.RESET_ALL}")
+                self.log(f"[ Booster Info ]")
                 time.sleep(1)
                 self.log(
-                    f"{Fore.MAGENTA+Style.BRIGHT}       -> Multitap Level   : {Style.RESET_ALL}"
-                    f"{Fore.WHITE+Style.BRIGHT}{user['multiple_clicks']}{Style.RESET_ALL}"
+                    f"       -> Multitap Level   : "
+                    f"{user['multiple_clicks']}"
                 )
                 self.log(
-                    f"{Fore.MAGENTA+Style.BRIGHT}       -> Daily Attempts   : {Style.RESET_ALL}"
-                    f"{Fore.WHITE+Style.BRIGHT}{user['limit_attempts']}{Style.RESET_ALL}"
+                    f"       -> Daily Attempts   : "
+                    f"{user['limit_attempts']}"
                 )
                 self.log(
-                    f"{Fore.MAGENTA+Style.BRIGHT}       -> DTC Mining Level : {Style.RESET_ALL}"
-                    f"{Fore.WHITE+Style.BRIGHT}{user['dtc_level']}{Style.RESET_ALL}"
+                    f"       -> DTC Mining Level : "
+                    f"{user['dtc_level']}"
                 )
                 time.sleep(1)
 
-                self.log(f"{Fore.CYAN+Style.BRIGHT}[ Assets Info ]{Style.RESET_ALL}")
+                self.log(f"[ Assets Info ]")
                 time.sleep(1)
                 assets = self.assets_info(token)
                 if assets:
@@ -300,19 +296,19 @@ class Dotcoin:
 
                         if asset['symbol'] == 'VENOM':
                             self.log(
-                                f"{Fore.MAGENTA+Style.BRIGHT}       -> Venom Amount     : {Style.RESET_ALL}"
-                                f"{Fore.WHITE+Style.BRIGHT}{asset['amount']} ${asset['symbol']}{Style.RESET_ALL}"
+                                f"       -> Venom Amount     : "
+                                f"{asset['amount']} ${asset['symbol']}"
                             )
                         else:
                             self.log(
-                                f"{Fore.MAGENTA+Style.BRIGHT}       -> Dotcoin Amount   : {Style.RESET_ALL}"
-                                f"{Fore.WHITE+Style.BRIGHT}{asset['amount']} ${asset['symbol']}{Style.RESET_ALL}"
+                                f"       -> Dotcoin Amount   : "
+                                f"{asset['amount']} ${asset['symbol']}"
                             )
                 else:
-                    self.log(f"{Fore.RED+Style.BRIGHT}[ Assets Info ] None{Style.RESET_ALL}")
+                    self.log(f"[ Assets Info ] None")
                 time.sleep(1)
 
-                self.log(f"{Fore.CYAN+Style.BRIGHT}[ Upgrade Boost ]{Style.RESET_ALL}")
+                self.log(f"[ Upgrade Boost ]")
                 time.sleep(1)
                 if add_multitap:
                     for i in range(multitap_count):
@@ -321,27 +317,27 @@ class Dotcoin:
                         upgrade = self.upgrade_multitap(token, multitap_level)
                         if upgrade['success']:
                             self.log(
-                                f"{Fore.MAGENTA+Style.BRIGHT}       -> Multitap         : {Style.RESET_ALL}"
-                                f"{Fore.GREEN+Style.BRIGHT}Upgrade Success{Style.RESET_ALL}"
-                                f"{Fore.WHITE+Style.BRIGHT} - {Style.RESET_ALL}"
-                                f"{Fore.MAGENTA+Style.BRIGHT}Level {Style.RESET_ALL}"
-                                f"{Fore.WHITE+Style.BRIGHT}{multitap_level + 1}{Style.RESET_ALL}"
+                                f"       -> Multitap         : "
+                                f"Upgrade Success"
+                                f"- "
+                                f"Level "
+                                f"{multitap_level + 1}"
                             )
                         else:
                             self.log(
-                                f"{Fore.MAGENTA+Style.BRIGHT}       -> Multitap         : {Style.RESET_ALL}"
-                                f"{Fore.RED+Style.BRIGHT}Not Enough Balance{Style.RESET_ALL}"
+                                f"       -> Multitap         : "
+                                f"Not Enough Balance"
                             )
                             break
                         time.sleep(1)
                 else:
                     self.log(
-                        f"{Fore.MAGENTA+Style.BRIGHT}       -> Multitap         : {Style.RESET_ALL}"
-                        f"{Fore.YELLOW+Style.BRIGHT}Skipped{Style.RESET_ALL}"
+                        f"       -> Multitap         : "
+                        f"Skipped"
                     )
                 time.sleep(1)
 
-                self.log(f"{Fore.CYAN+Style.BRIGHT}[ Upgrade Boost ]{Style.RESET_ALL}")
+                self.log(f"[ Upgrade Boost ]")
                 time.sleep(1)
                 if add_attempts:
                     for i in range(attempts_count):
@@ -350,27 +346,27 @@ class Dotcoin:
                         upgrade = self.upgrade_attempts(token, attempts_level)
                         if upgrade['success']:
                             self.log(
-                                f"{Fore.MAGENTA+Style.BRIGHT}       -> Limit Attempts   : {Style.RESET_ALL}"
-                                f"{Fore.GREEN+Style.BRIGHT}Upgrade Success{Style.RESET_ALL}"
-                                f"{Fore.WHITE+Style.BRIGHT} - {Style.RESET_ALL}"
-                                f"{Fore.MAGENTA+Style.BRIGHT}Level {Style.RESET_ALL}"
-                                f"{Fore.WHITE+Style.BRIGHT}{attempts_level + 1}{Style.RESET_ALL}"
+                                f"       -> Limit Attempts   : "
+                                f"Upgrade Success"
+                                f"- "
+                                f"Level "
+                                f"{attempts_level + 1}"
                             )
                         else:
                             self.log(
-                                f"{Fore.MAGENTA+Style.BRIGHT}       -> Limit Attempts   : {Style.RESET_ALL}"
-                                f"{Fore.RED+Style.BRIGHT}Not Enough Balance{Style.RESET_ALL}"
+                                f"       -> Limit Attempts   : "
+                                f"Not Enough Balance"
                             )
                             break
                         time.sleep(1)
                 else:
                     self.log(
-                        f"{Fore.MAGENTA+Style.BRIGHT}       -> Limit Attempts   : {Style.RESET_ALL}"
-                        f"{Fore.YELLOW+Style.BRIGHT}Skipped{Style.RESET_ALL}"
+                        f"       -> Limit Attempts   : "
+                        f"Skipped"
                     )
                 time.sleep(1)
 
-                self.log(f"{Fore.CYAN+Style.BRIGHT}[ Upgrade Boost ]{Style.RESET_ALL}")
+                self.log(f"[ Upgrade Boost ]")
                 time.sleep(1)
                 if dtc_miner:
                     user = self.user_info(token)
@@ -378,28 +374,28 @@ class Dotcoin:
                     upgrade = self.upgrade_dtc_miner(token)
                     if upgrade['success']:
                         self.log(
-                            f"{Fore.MAGENTA+Style.BRIGHT}       -> DTC Mining       : {Style.RESET_ALL}"
-                            f"{Fore.GREEN+Style.BRIGHT}Upgrade Success{Style.RESET_ALL}"
-                            f"{Fore.WHITE+Style.BRIGHT} - {Style.RESET_ALL}"
-                            f"{Fore.MAGENTA+Style.BRIGHT}Level {Style.RESET_ALL}"
-                            f"{Fore.WHITE+Style.BRIGHT}{miner_level + 1}{Style.RESET_ALL}"
+                            f"       -> DTC Mining       : "
+                            f"Upgrade Success"
+                            f"- "
+                            f"Level "
+                            f"{miner_level + 1}"
                         )
                     else:
                         self.log(
-                            f"{Fore.MAGENTA+Style.BRIGHT}       -> DTC Mining       : {Style.RESET_ALL}"
-                            f"{Fore.RED+Style.BRIGHT}Upgrade Failed{Style.RESET_ALL}"
+                            f"       -> DTC Mining       : "
+                            f"Upgrade Failed"
                         )
                 else:
                     self.log(
-                        f"{Fore.MAGENTA+Style.BRIGHT}       -> DTC Mining       : {Style.RESET_ALL}"
-                        f"{Fore.YELLOW+Style.BRIGHT}Skipped{Style.RESET_ALL}"
+                        f"       -> DTC Mining       : "
+                        f"Skipped"
                     )
                 time.sleep(1)
 
                 if spinner:
                     self.log(
-                        f"{Fore.CYAN+Style.BRIGHT}[ Play Game ] {Style.RESET_ALL}"
-                        f"{Fore.WHITE+Style.BRIGHT}Spinner{Style.RESET_ALL}"
+                        f"[ Play Game ] "
+                        f"Spinner"
                     )
                     time.sleep(1)
 
@@ -418,50 +414,50 @@ class Dotcoin:
                                 if spin['success']:
                                     if spin['symbol'] == 'VENOM':
                                         self.log(
-                                            f"{Fore.MAGENTA+Style.BRIGHT}       -> Spinner : {Style.RESET_ALL}"
-                                            f"{Fore.GREEN+Style.BRIGHT}Success{Style.RESET_ALL}"
-                                            f"{Fore.WHITE+Style.BRIGHT} - {Style.RESET_ALL}"
-                                            f"{Fore.MAGENTA+Style.BRIGHT}Reward {Style.RESET_ALL}"
-                                            f"{Fore.WHITE+Style.BRIGHT}{spin['amount']} $VENOM{Style.RESET_ALL}"
+                                            f"       -> Spinner : "
+                                            f"Success"
+                                            f"- "
+                                            f"Reward "
+                                            f"{spin['amount']} $VENOM"
                                         )
                                     else:
                                         self.log(
-                                            f"{Fore.MAGENTA+Style.BRIGHT}       -> Spinner : {Style.RESET_ALL}"
-                                            f"{Fore.GREEN+Style.BRIGHT}Success{Style.RESET_ALL}"
-                                            f"{Fore.WHITE+Style.BRIGHT} - {Style.RESET_ALL}"
-                                            f"{Fore.MAGENTA+Style.BRIGHT}Reward {Style.RESET_ALL}"
-                                            f"{Fore.WHITE+Style.BRIGHT}{spin['amount']} $DTC{Style.RESET_ALL}"
+                                            f"       -> Spinner : "
+                                            f"Success"
+                                            f"- "
+                                            f"Reward "
+                                            f"{spin['amount']} $DTC"
                                         )
                                 else:
                                     self.log(
-                                        f"{Fore.MAGENTA+Style.BRIGHT}       -> Spinner : {Style.RESET_ALL}"
-                                        f"{Fore.YELLOW+Style.BRIGHT}Already Play Spinner{Style.RESET_ALL}"
+                                        f"       -> Spinner : "
+                                        f"Already Play Spinner"
                                     )
                                     self.log(
-                                        f"{Fore.MAGENTA+Style.BRIGHT}       -> Spinner : {Style.RESET_ALL}"
-                                        f"{Fore.YELLOW+Style.BRIGHT}Comeback at {Style.RESET_ALL}"
-                                        f"{Fore.WHITE+Style.BRIGHT}{spinner_ready}{Style.RESET_ALL}"
+                                        f"       -> Spinner : "
+                                        f"Comeback at "
+                                        f"{spinner_ready}"
                                     )
                                 time.sleep(1)
                             else:
                                 self.log(
-                                    f"{Fore.MAGENTA+Style.BRIGHT}       -> Spinner : {Style.RESET_ALL}"
-                                    f"{Fore.YELLOW+Style.BRIGHT}Not Enough DTC{Style.RESET_ALL}"
+                                    f"       -> Spinner : "
+                                    f"Not Enough DTC"
                                 )
                                 self.log(
-                                    f"{Fore.MAGENTA+Style.BRIGHT}       -> Amount  : {Style.RESET_ALL}"
-                                    f"{Fore.WHITE+Style.BRIGHT}{dtc_amount} $DTC{Style.RESET_ALL}"
+                                    f"       -> Amount  : "
+                                    f"{dtc_amount} $DTC"
                                 )
                 else:
                     self.log(
-                        f"{Fore.CYAN+Style.BRIGHT}[ Play Game ] {Style.RESET_ALL}"
-                        f"{Fore.YELLOW+Style.BRIGHT}Spinner Skipped{Style.RESET_ALL}"
+                        f"[ Play Game ] "
+                        f"Spinner Skipped"
                     )
                 time.sleep(1)
 
                 self.log(
-                    f"{Fore.CYAN+Style.BRIGHT}[ Play Game ] {Style.RESET_ALL}"
-                    f"{Fore.WHITE+Style.BRIGHT}Double Coins{Style.RESET_ALL}"
+                    f"[ Play Game ] "
+                    f"Double Coins"
                 )
                 time.sleep(1)
                 if user['gamex2_times'] != 0:
@@ -469,33 +465,33 @@ class Dotcoin:
                     gacha = self.double_coins(token, coins)
                     if gacha['success']:
                         self.log(
-                            f"{Fore.MAGENTA+Style.BRIGHT}       -> Gacha   : {Style.RESET_ALL}"
-                            f"{Fore.GREEN+Style.BRIGHT}WIN{Style.RESET_ALL}"
-                            f"{Fore.WHITE+Style.BRIGHT} - {Style.RESET_ALL}"
-                            f"{Fore.MAGENTA+Style.BRIGHT}Reward {Style.RESET_ALL}"
-                            f"{Fore.WHITE+Style.BRIGHT}{coins}{Style.RESET_ALL}"
+                            f"       -> Gacha   : "
+                            f"WIN"
+                            f"- "
+                            f"Reward "
+                            f"{coins}"
                         )
                     else:
                         self.log(
-                            f"{Fore.MAGENTA+Style.BRIGHT}       -> Gacha   : {Style.RESET_ALL}"
-                            f"{Fore.RED+Style.BRIGHT}LOSE{Style.RESET_ALL}"
+                            f"       -> Gacha   : "
+                            f"LOSE"
                         )
                 else:
                     self.log(
-                        f"{Fore.MAGENTA+Style.BRIGHT}       -> Gacha   : {Style.RESET_ALL}"
-                        f"{Fore.YELLOW+Style.BRIGHT}Already Gacha Today{Style.RESET_ALL}"
+                        f"       -> Gacha   : "
+                        f"Already Gacha Today"
                     )
                 time.sleep(1)
 
                 self.log(
-                    f"{Fore.CYAN+Style.BRIGHT}[ Play Game ] {Style.RESET_ALL}"
-                    f"{Fore.WHITE+Style.BRIGHT}Tap Tap{Style.RESET_ALL}"
+                    f"[ Play Game ] "
+                    f"Tap Tap"
                 )
                 time.sleep(1)
                 energy = user['daily_attempts']
                 self.log(
-                    f"{Fore.MAGENTA+Style.BRIGHT}       -> Tap Tap : {Style.RESET_ALL}"
-                    f"{Fore.WHITE+Style.BRIGHT}Energy {energy}{Style.RESET_ALL}"
+                    f"       -> Tap Tap : "
+                    f"Energy {energy}"
                 )
                 time.sleep(1)
                 while energy > 0:
@@ -504,13 +500,13 @@ class Dotcoin:
                         taps = self.save_coins(token, 20000)
                         if taps['success']:
                             self.log(
-                                f"{Fore.MAGENTA+Style.BRIGHT}       -> Tap Tap : {Style.RESET_ALL}"
-                                f"{Fore.GREEN+Style.BRIGHT}Success{Style.RESET_ALL}"
+                                f"       -> Tap Tap : "
+                                f"Success"
                             )
                         else:
                             self.log(
-                                f"{Fore.MAGENTA+Style.BRIGHT}       -> Tap Tap : {Style.RESET_ALL}"
-                                f"{Fore.RED+Style.BRIGHT}Failed{Style.RESET_ALL}"
+                                f"       -> Tap Tap : "
+                                f"Failed"
                             )
                     user = self.user_info(token)
                     energy = user['daily_attempts']
@@ -520,13 +516,13 @@ class Dotcoin:
                             restore = self.restore_attempts(token)
                             if restore['success'] and restore:
                                 self.log(
-                                    f"{Fore.MAGENTA+Style.BRIGHT}       -> Tap Tap : {Style.RESET_ALL}"
-                                    f"{Fore.GREEN+Style.BRIGHT}Restore Energy Success{Style.RESET_ALL}"
+                                    f"       -> Tap Tap : "
+                                    f"Restore Energy Success"
                                 )
                             else:
                                 self.log(
-                                    f"{Fore.MAGENTA+Style.BRIGHT}       -> Tap Tap : {Style.RESET_ALL}"
-                                    f"{Fore.YELLOW+Style.BRIGHT}Restore Energy Reached Limit{Style.RESET_ALL}"
+                                    f"       -> Tap Tap : "
+                                    f"Restore Energy Reached Limit"
                                 )
                                 count += 1
                             time.sleep(1)
@@ -534,15 +530,15 @@ class Dotcoin:
                             energy = user['daily_attempts']
                 else:
                     self.log(
-                        f"{Fore.MAGENTA+Style.BRIGHT}       -> Tap Tap : {Style.RESET_ALL}"
-                        f"{Fore.YELLOW+Style.BRIGHT}Energy has Run Out{Style.RESET_ALL}"
+                        f"       -> Tap Tap : "
+                        f"Energy has Run Out"
                     )
                 time.sleep(1)
 
                 if check_task:
                     self.log(
-                        f"{Fore.CYAN+Style.BRIGHT}[ Check Task ] {Style.RESET_ALL}"
-                        f"{Fore.GREEN+Style.BRIGHT}Checked{Style.RESET_ALL}"
+                        f"[ Check Task ] "
+                        f"Checked"
                     )
                     tasks = self.tasks(token)
                     if tasks:
@@ -554,39 +550,39 @@ class Dotcoin:
                                 complete = self.complete_tasks(token, task_id)
                                 if complete['success']:
                                     self.log(
-                                        f"{Fore.MAGENTA+Style.BRIGHT}       -> Task{Style.RESET_ALL}"
-                                        f"{Fore.WHITE+Style.BRIGHT} {task['title']} {Style.RESET_ALL}"
-                                        f"{Fore.GREEN+Style.BRIGHT}Completed{Style.RESET_ALL}"
-                                        f"{Fore.WHITE+Style.BRIGHT} - {Style.RESET_ALL}"
-                                        f"{Fore.MAGENTA+Style.BRIGHT}Reward {Style.RESET_ALL}"
-                                        f"{Fore.WHITE+Style.BRIGHT}{task['reward']}{Style.RESET_ALL}"
+                                        f"       -> Task"
+                                        f"{task['title']} "
+                                        f"Completed"
+                                        f"- "
+                                        f"Reward "
+                                        f"{task['reward']}"
                                     )
                                 else:
                                     self.log(
-                                        f"{Fore.MAGENTA+Style.BRIGHT}       -> Task{Style.RESET_ALL}"
-                                        f"{Fore.WHITE+Style.BRIGHT} {task['title']} {Style.RESET_ALL}"
-                                        f"{Fore.RED+Style.BRIGHT}Not Completed{Style.RESET_ALL}"
+                                        f"       -> Task"
+                                        f"{task['title']} "
+                                        f"Not Completed"
                                     )
                                 time.sleep(1)
                     else:
                         self.log(
-                            f"{Fore.MAGENTA+Style.BRIGHT}       -> Task{Style.RESET_ALL}"
-                            f"{Fore.RED+Style.BRIGHT}Failed to Checked Tasks{Style.RESET_ALL}"
+                            f"       -> Task"
+                            f"Failed to Checked Tasks"
                         )
                     time.sleep(1)
                 else:
                     self.log(
-                        f"{Fore.CYAN+Style.BRIGHT}[ Check Task ] {Style.RESET_ALL}"
-                        f"{Fore.YELLOW+Style.BRIGHT}Skipped{Style.RESET_ALL}"
+                        f"[ Check Task ] "
+                        f"Skipped"
                     )
                 time.sleep(1)
 
             else:
-                self.log(f"{Fore.RED+Style.BRIGHT}[ Account None ]{Style.RESET_ALL}")
+                self.log(f"[ Account None ]")
                 time.sleep(1)
 
         else:
-            self.log(f"{Fore.RED+Style.BRIGHT}[ Token None ]{Style.RESET_ALL}")
+            self.log(f"[ Token None ]")
             time.sleep(1)
         
     def main(self):
@@ -598,34 +594,33 @@ class Dotcoin:
 
             while True:
                 self.log(
-                    f"{Fore.GREEN + Style.BRIGHT}Account's Total: {Style.RESET_ALL}"
-                    f"{Fore.WHITE + Style.BRIGHT}{len(queries)}{Style.RESET_ALL}"
+                    f"Account's Total: "
+                    f"{len(queries)}"
                 )
-                self.log(f"{Fore.CYAN + Style.BRIGHT}-{Style.RESET_ALL}" * 75)
 
                 for query in queries:
                     query = query.strip()
                     if query:
                         self.process_query(query, add_multitap, multitap_count, add_attempts, attempts_count, dtc_miner, spinner, check_task)
-                        self.log(f"{Fore.CYAN + Style.BRIGHT}-{Style.RESET_ALL}" * 75)
+                        self.log(f"-" * 75)
                 print("KELUAR")
                 break
                 seconds = 1800
                 while seconds > 0:
                     formatted_time = self.format_seconds(seconds)
                     print(
-                        f"{Fore.CYAN+Style.BRIGHT}[ Wait for{Style.RESET_ALL}"
-                        f"{Fore.WHITE+Style.BRIGHT} {formatted_time} {Style.RESET_ALL}"
-                        f"{Fore.CYAN+Style.BRIGHT}... ]{Style.RESET_ALL}",
+                        f"[ Wait for"
+                        f"{formatted_time} "
+                        f"... ]",
                         end="\r"
                     )
                     time.sleep(1)
                     seconds -= 1
 
         except KeyboardInterrupt:
-            self.log(f"{Fore.RED + Style.BRIGHT}[ EXIT ] Dotcoin - BOT{Style.RESET_ALL}")
+            self.log(f"{Fore.RED + Style.BRIGHT}[ EXIT ] Dotcoin - BOT")
         except Exception as e:
-            self.log(f"{Fore.RED + Style.BRIGHT}An error occurred: {e}{Style.RESET_ALL}")
+            self.log(f"{Fore.RED + Style.BRIGHT}An error occurred: {e}")
 
 if __name__ == "__main__":
     dotcoin = Dotcoin()
