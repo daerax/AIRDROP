@@ -6,6 +6,7 @@ from datetime import datetime, timedelta, timezone
 import argparse
 import urllib.parse
 import os
+init(autoreset=True)
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description='TimeFarm BOT')
@@ -265,12 +266,6 @@ def main():
                             else:
                                 print(Fore.RED + Style.BRIGHT + f"\r[ Farming ] : Gagal Cek Farming", flush=True)
                                 continue
-                            # print(Fore.YELLOW + Style.BRIGHT + f"\r[ Refferal ] : Checking ...", end="", flush=True)
-                            # time.sleep(2)
-                            # refferal_response = cek_reff(token)
-                            # if refferal_response:
-                            #     print(Fore.GREEN + Style.BRIGHT + f"\r[ Refferal ] : {refferal_response['totalRefferal']}", flush=True)
-                
                 except Exception as e:
                     
                     print(f"An error occurred: {str(e)}")

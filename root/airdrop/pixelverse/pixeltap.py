@@ -5,8 +5,7 @@ import json
 from datetime import datetime, timedelta, timezone
 import argparse
 import json
-
-  
+init(autoreset=True)
 headers = {
     'accept': 'application/json, text/plain, */*',
     'accept-language': 'en-US,en;q=0.9',
@@ -324,8 +323,6 @@ def main():
                     else:
                         print(f"{Fore.RED + Style.BRIGHT}[\n======= Query Salah =======")
                 
-                        
-        
                 print("KELUAR")
                 break
                 animated_loading(300)            

@@ -2,13 +2,15 @@ import requests
 import json
 from datetime import datetime, timedelta, timezone
 import time  # Tambahkan import time
-from colorama import Fore, Style  # Tambahkan import colorama
+from colorama import Fore, Style, init  # Tambahkan import colorama
 import os  # Tambahkan import os
 import sys
 import threading
 def read_tokens():
     with open('initdata.txt', 'r') as file:
         return file.read().strip().split('\n')  # Membaca beberapa token
+
+init(autoreset=True)
 
 def print_welcome_message():
     print(r"""
@@ -65,6 +67,9 @@ def get_data(token):
         print(Fore.RED + "Gaada tokennya ganteng" + Style.RESET_ALL)  # Warna merah jika gagal mengambil data
         return None
 
+# Event untuk menghentikan semua thread
+stop_event = threading.Event()
+
 def click_spinner(token, repair):
     url = 'https://back.timboo.pro/api/upd-data'
     headers = {
@@ -92,16 +97,19 @@ def click_spinner(token, repair):
         }
     }
 
-    while True:
+    while not stop_event.is_set():  # Periksa apakah event sudah di-set untuk menghentikan loop
         response = requests.post(url, headers=headers, json=data)
-        # print(response.json())
         if response.status_code == 200:
             print(Fore.GREEN + "[ Tap ]: Tapping..." + Style.RESET_ALL)
+        elif response.status_code == 400:
+            print(Fore.RED + "[ Error ]: Status 400 detected, stopping threads..." + Style.RESET_ALL)
+            stop_event.set()  # Set event untuk menghentikan semua thread
+            break
         else:
             print(Fore.GREEN + "[ Tap ]: Tapping selesai..." + Style.RESET_ALL)
             break
 
-    if repair:
+    if repair and not stop_event.is_set():  # Hanya menampilkan pesan repair jika thread tidak dihentikan
         end_time = datetime.strptime(repair, '%Y-%m-%dT%H:%M:%S.%fZ').replace(tzinfo=timezone.utc)
         remaining_time = end_time - datetime.now(timezone.utc)
         hours, remainder = divmod(remaining_time.total_seconds(), 3600)
@@ -109,15 +117,24 @@ def click_spinner(token, repair):
         repair = f"{int(hours):02}:{int(minutes):02}:{int(seconds):02}"
         print(f"{Fore.YELLOW}[ Repair ]: Tunggu {repair} lagi..." + Style.RESET_ALL)
 
+def worker(token, repair):
+    while not stop_event.is_set():
+        click_spinner(token, repair)
+
 def multi_thread_click_spinner(token, repair, num_threads=100):
+    global stop_event
+    stop_event.clear()  # Reset event sebelum memulai thread baru
     threads = []
+
     for _ in range(num_threads):
-        thread = threading.Thread(target=click_spinner, args=(token, repair))
+        if stop_event.is_set():  # Jika event sudah di-set, hentikan pembuatan thread baru
+            break
+        thread = threading.Thread(target=worker, args=(token, repair))
         threads.append(thread)
         thread.start()
-    
+
     for thread in threads:
-        thread.join()
+        thread.join()  # Tunggu hingga semua thread selesai
 
 
 def repair_spinner(token):
