@@ -159,16 +159,20 @@ async def main():
             success, status_message = keep_alive(headers, email)
 
             if success:
-                message = f"""👤 Account: acc {account_index}
+                message = f"""✴️ Dawn Validator ✴️
+👤 Account: {email}
 ℹ️ Status: Keep alive ✅
-💰 Point: +{points:,.0f}"""
+💰 Point: +{points:,.0f}
+Your account successfully "Keep Alive" 👋"""
                 await telegram_message(message)
                 print(f"{Fore.GREEN}[✓] Status: Keep alive recorded{Style.BRIGHT}")
                 print(f"{Fore.GREEN}[✓] Request for {email} successful.{Style.BRIGHT}\n")
             else:
-                message = f"""👤 Account: acc {account_index}
+                message = f"""🚨 Dawn Validator 🚨
+👤 Account: {email}
 ℹ️ Status: Failed ❌
-⚠️ Error: {status_message}"""
+⚠️ Error: {status_message}
+Oops! There was an error in the "Keep Alive" process. Don't worry, it won't take long. 👌"""
                 await telegram_message(message)
                 print(f"{Fore.RED}[X] Status: Keep alive failed!{Style.BRIGHT}")
                 print(f"{Fore.RED}[X] Error: {status_message}{Style.BRIGHT}\n")

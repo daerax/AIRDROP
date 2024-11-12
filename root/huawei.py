@@ -1,3 +1,4 @@
+import time
 from huawei_lte_api.Client import Client
 from huawei_lte_api.AuthorizedConnection import AuthorizedConnection
 
@@ -32,12 +33,15 @@ connection_url = f'http://{username}:{password}@{router_ip}/'
 with AuthorizedConnection(connection_url) as connection:
     client = Client(connection)
     try:
-        print(client.device.information())
-
         # Tampilkan semua data dari net_mode untuk validasi
         print("before")
         print(client.net.net_mode())
         
+        print("jeda")
+        client.net.set_net_mode("4", "3FFFFFFF", "03")
+        print(client.net.net_mode())
+        
+        time.sleep(3)
         print("after")
         client.net.set_net_mode(band, "3FFFFFFF", "03")
         print(client.net.net_mode())

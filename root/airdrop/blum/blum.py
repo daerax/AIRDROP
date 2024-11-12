@@ -494,8 +494,9 @@ class Blum:
                         f"{Fore.WHITE + Style.BRIGHT}[ Home/Play Passes ]{Style.RESET_ALL}"
                         f"{Fore.WHITE + Style.BRIGHT} | {Style.RESET_ALL}"
                         f"{Fore.CYAN + Style.BRIGHT}[ {username} ]{Style.RESET_ALL}"
+                        f"SKIP"
                     )
-                    await self.play_game(token=token)
+                    # await self.play_game(token=token)
 
                 for (token, username) in accounts:
                     self.print_timestamp(

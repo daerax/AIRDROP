@@ -351,6 +351,7 @@ def process_account(token):
     nickname = get_my_user_nick(token)
     print(f"{Fore.BLUE + Style.BRIGHT}\n========[{Fore.WHITE + Style.BRIGHT} Akun | {nickname} {Fore.BLUE + Style.BRIGHT}]========")
     print(f"{random.choice(available_colors)+Style.BRIGHT}\r[ Squad ] : Getting...", end="", flush=True)
+    time.sleep(2)
     squad_info = fetch_squad_info(token)
     if squad_info and squad_info['data']['isJoinSquad']:
         squad_title = squad_info['data']['squadInfo']['squadTitle']
@@ -366,6 +367,7 @@ def process_account(token):
             print(f"{random.choice(available_colors) + Style.BRIGHT}\r[ Squad ] : Failed to join Ghalibie.", flush=True)
 
     print(f"{random.choice(available_colors)+Style.BRIGHT}\r[ Balance ] : Getting...", end="", flush=True)
+    time.sleep(2)
     balance = fetch_account_info(token)
     if balance is None:
         print(f"{Fore.RED}\r[ Balance ] : Failed to get balance", flush=True)
@@ -374,8 +376,8 @@ def process_account(token):
         balance = balance.get('data', {}).get('currentAmount', 0)
         balance = f"{balance:,}".replace(',', '.')
         print(f"{random.choice(available_colors) + Style.BRIGHT}\r[ Balance ] : {balance}           ", flush=True)
-    
     print(f"{random.choice(available_colors)+Style.BRIGHT}\r[ Game Info ] : Getting...", end="", flush=True)
+    time.sleep(2)
     game_info = fetch_account_build_info(token)
     if game_info is None:
         print(f"{Fore.RED}\r[ Game Info ] : Failed to get data", flush=True)
@@ -392,8 +394,8 @@ def process_account(token):
         print(f"{random.choice(available_colors)+Style.BRIGHT}\r[ Fill Rate ] : Level {coin_pool_recovery_speed}", flush=True)
     if cek_task_enable == 'y':
         print(f"{random.choice(available_colors)+Style.BRIGHT}\r[ Task ] : Trying to finish task..", end="", flush=True)
+        time.sleep(2)
         process_tasks(token)
-    time.sleep(2)
     if upgrade_multi_enable == 'y':
         print(f"{random.choice(available_colors)+Style.BRIGHT}\r[ Upgrade ] : Upgrading Multi Value...", end="", flush=True)
         upgrade_level(token, single_coin_value, max_level, '1')
@@ -401,8 +403,8 @@ def process_account(token):
     if upgrade_fill_enable == 'y':
         print(f"{random.choice(available_colors)+Style.BRIGHT}\r[ Upgrade ] : Upgrading Fill Rate...", end="", flush=True)
         upgrade_level(token, coin_pool_recovery_speed, max_level, '2')
-    
     print(f"{random.choice(available_colors)+Style.BRIGHT}\r[ Game Info ] : Getting...", end="", flush=True)
+    time.sleep(2)
     collect_info = fetch_game_info(token)
     if collect_info is None:
         print(f"{Fore.RED}\r[ Game Info ] : Failed to get data", flush=True)
@@ -411,10 +413,10 @@ def process_account(token):
         single_coin_value = collect_info['data'].get('singleCoinValue', 0)
         coin_pool_left_count = collect_info['data'].get('coinPoolLeftCount', 0)
         print(f"{random.choice(available_colors) + Style.BRIGHT}\r[ Coin Left ] : {coin_pool_left_count}                              ", flush=True)
-        
         print(f"{random.choice(available_colors)+Style.BRIGHT}\r[ Collect ] : Collecting Coin...", end="", flush=True)
         if coin_pool_left_count > 0:
             amount =  coin_pool_left_count // single_coin_value
+            time.sleep(2)
             collect_result = collect_coin(token, amount)
             if collect_result and collect_result.get('code') == 0:
                 collected_amount = collect_result['data']['collectAmount']
@@ -426,6 +428,7 @@ def process_account(token):
     if game_info and game_info['data'].get('specialBoxLeftRecoveryCount', 0) > 0:
         if use_special_box(token):
             print(f"{random.choice(available_colors)+Style.BRIGHT}\r[ Chest ] : Collecting...", end="", flush=True)
+            time.sleep(2)
             collected_amount = attempt_collect_special_box(token, 2, 240)  # Contoh: box_type=2, coin_count=250
     else:
         print(f"{random.choice(available_colors)+Style.BRIGHT}\r[ Chest ] : No chest available          ", flush=True)
@@ -440,6 +443,7 @@ def process_account(token):
                 coin_pool_left_count = collect_info['data'].get('coinPoolLeftCount', 0)
                 if coin_pool_left_count > 0:
                     amount = coin_pool_left_count // game_info['data'].get('singleCoinValue', 1)
+                    time.sleep(1)
                     collect_result = collect_coin(token, amount)
                     if collect_result and collect_result.get('code') == 0:
                         collected_amount = collect_result['data']['collectAmount']

@@ -175,7 +175,7 @@ async def firstRun():
                 print(f"Buy Tap (7_days): {Fore.GREEN+bright if beliTap.get('success', False) else Fore.RED}{beliTap.get('success', next(iter(beliTap.values())))}")
                 cek = await dailyCek(tempSession, token)
                 harian = await dailyReward(tempSession, token, int(cek.get('next', 'err')))
-                print(f"Claim Daily\t: {Fore.GREEN+bright}Day-{cek['last']} | {Fore.GREEN+bright + str(harian.get('success', harian.get('error', 0))) if cek.get('is_available', False) else Fore.RED + 'Wait -'+ hitung_mundur(cek.get('available_at', 0))}\n")
+                print(f"Claim Daily\t: {Fore.GREEN+bright}Day-{cek['last']} | {Fore.GREEN+bright}{str(harian.get('success', harian.get('error', 0))) if cek.get('is_available', False) else Fore.RED + 'Wait -'+ hitung_mundur(cek.get('available_at', 0))}\n")
                 simpan_datanya(username, token, user_id)
 
 async def main():
