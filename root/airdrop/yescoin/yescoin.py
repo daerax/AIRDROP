@@ -48,7 +48,7 @@ def get_headers(token):
     }
 
 def collect_coin(token, amount):
-    url = 'https://api.yescoin.gold/game/collectCoin'
+    url = 'https://bi.yescoin.gold/game/collectCoin'
     headers = get_headers(token)
     data = json.dumps(amount)  # Ensure data is sent as JSON-encoded string
     try:
@@ -72,7 +72,7 @@ def collect_coin(token, amount):
 
 def fetch_account_info(token):
     try:
-        url = 'https://api.yescoin.gold/account/getAccountInfo'
+        url = 'https://bi.yescoin.gold/account/getAccountInfo'
         headers = get_headers(token)
         response = requests.get(url, headers=headers)
         response.raise_for_status()
@@ -86,7 +86,7 @@ def fetch_account_info(token):
 
 def fetch_game_info(token):
     try:
-        url = 'https://api.yescoin.gold/game/getGameInfo'
+        url = 'https://bi.yescoin.gold/game/getGameInfo'
         headers = get_headers(token)
         response = requests.get(url, headers=headers)
         response.raise_for_status()
@@ -99,7 +99,7 @@ def fetch_game_info(token):
         print(f"Error fetching game info: {e}")
 
 def use_special_box(token):
-    url = 'https://api.yescoin.gold/game/recoverSpecialBox'
+    url = 'https://bi.yescoin.gold/game/recoverSpecialBox'
     headers = get_headers(token)
     try:
         response = requests.post(url, headers=headers)
@@ -117,7 +117,7 @@ def use_special_box(token):
     
 def fetch_special_box_info(token):
     try:
-        url = 'https://api.yescoin.gold/game/getSpecialBoxInfo'
+        url = 'https://bi.yescoin.gold/game/getSpecialBoxInfo'
         headers = get_headers(token)
         response = requests.get(url, headers=headers)
         response.raise_for_status()
@@ -132,7 +132,7 @@ def fetch_special_box_info(token):
 
 def get_my_user_nick(token):
     try:
-        url = 'https://api.yescoin.gold/account/getRankingList?index=1&pageSize=1&rankType=1&userLevel=1'
+        url = 'https://bi.yescoin.gold/account/getRankingList?index=1&pageSize=1&rankType=1&userLevel=1'
         headers = get_headers(token)
         response = requests.get(url, headers=headers)
         response.raise_for_status()
@@ -146,7 +146,7 @@ def get_my_user_nick(token):
 
 
 def collect_from_special_box(token, box_type, coin_count):
-    url = 'https://api.yescoin.gold/game/collectSpecialBoxCoin'
+    url = 'https://bi.yescoin.gold/game/collectSpecialBoxCoin'
     headers = get_headers(token)
     data = json.dumps({"boxType": box_type, "coinCount": coin_count})
     try:
@@ -182,7 +182,7 @@ def attempt_collect_special_box(token, box_type, initial_coin_count):
 
 def fetch_account_build_info(token):
     try:
-        url = 'https://api.yescoin.gold/build/getAccountBuildInfo'
+        url = 'https://bi.yescoin.gold/build/getAccountBuildInfo'
         headers = get_headers(token)
         response = requests.get(url, headers=headers)
         response.raise_for_status()
@@ -200,7 +200,7 @@ def fetch_account_build_info(token):
 
 
 def fetch_squad_info(token):
-    url = 'https://api.yescoin.gold/squad/mySquad'
+    url = 'https://bi.yescoin.gold/squad/mySquad'
     headers = get_headers(token)
     try:
         response = requests.get(url, headers=headers)
@@ -215,7 +215,7 @@ def fetch_squad_info(token):
         return None
     
 def join_squad(token, squad_link):
-    url = 'https://api.yescoin.gold/squad/joinSquad'
+    url = 'https://bi.yescoin.gold/squad/joinSquad'
     headers = get_headers(token)
     data = json.dumps({"squadTgLink": squad_link})
     try:
@@ -231,7 +231,7 @@ def join_squad(token, squad_link):
         return None
 
 def recover_coin_pool(token):
-    url = 'https://api.yescoin.gold/game/recoverCoinPool'
+    url = 'https://bi.yescoin.gold/game/recoverCoinPool'
     headers = get_headers(token)
     try:
         response = requests.post(url, headers=headers)
@@ -248,7 +248,7 @@ def recover_coin_pool(token):
         return False
 
 def fetch_task_list(token):
-    url = 'https://api.yescoin.gold/task/getCommonTaskList'
+    url = 'https://bi.yescoin.gold/task/getCommonTaskList'
     headers = get_headers(token)
     try:
         response = requests.get(url, headers=headers)
@@ -263,7 +263,7 @@ def fetch_task_list(token):
         print(f"{Fore.RED + Style.BRIGHT}Error: {e}")
         return None
 def finish_task(token, task_id):
-    url = 'https://api.yescoin.gold/task/finishTask'
+    url = 'https://bi.yescoin.gold/task/finishTask'
     headers = get_headers(token)
     data = json.dumps(task_id)
     try:
@@ -295,7 +295,7 @@ def process_tasks(token):
 import random
 def upgrade_level(token, current_level, target_level, upgrade_type):
 
-    url = 'https://api.yescoin.gold/build/levelUp'
+    url = 'https://bi.yescoin.gold/build/levelUp'
     headers = get_headers(token)
     data = json.dumps(upgrade_type)
     if upgrade_type == '1':
@@ -319,7 +319,7 @@ def upgrade_level(token, current_level, target_level, upgrade_type):
         print(f"{random.choice(available_colors)+Style.BRIGHT}\r[ Upgrade ] : {upgrade_type_name} already at level {current_level}          ", flush=True)
 
 def get_token_from_payload(payload):
-    url = 'https://api-backend.yescoin.gold/user/login'
+    url = 'https://bi.yescoin.gold/user/login'
     headers = {
         'accept': 'application/json, text/plain, */*',
         'accept-language': 'en-US,en;q=0.9',
